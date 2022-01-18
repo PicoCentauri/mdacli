@@ -1,5 +1,11 @@
 [
   {
+    "version": "0.1.10",
+    "display": "0.1.10",
+    "url": "https://mdacli.mdanalysis.org/0.1.10",
+    "latest": true
+  },
+  {
     "version": "0.1.4",
     "display": "0.1.4",
     "url": "https://mdacli.mdanalysis.org/0.1.4",
@@ -27,7 +33,13 @@
     "version": "0.1.8",
     "display": "0.1.8",
     "url": "https://mdacli.mdanalysis.org/0.1.8",
-    "latest": true
+    "latest": false
+  },
+  {
+    "version": "0.1.9",
+    "display": "0.1.9",
+    "url": "https://mdacli.mdanalysis.org/0.1.9",
+    "latest": false
   },
   {
     "version": "dev",

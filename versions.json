@@ -3,6 +3,12 @@
     "version": "0.1.10",
     "display": "0.1.10",
     "url": "https://mdacli.mdanalysis.org/0.1.10",
+    "latest": false
+  },
+  {
+    "version": "0.1.11",
+    "display": "0.1.11",
+    "url": "https://mdacli.mdanalysis.org/0.1.11",
     "latest": true
   },
   {

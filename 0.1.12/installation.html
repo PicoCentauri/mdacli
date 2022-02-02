@@ -49,11 +49,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#pip">pip</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#conda">conda</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="philosophy.html">Philosophy and approach</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
@@ -90,38 +86,24 @@
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">mdacli</span></code> is a <em>pluging</em> tool for <a class="reference external" href="https://www.mdanalysis.org/">MDAnalysis</a>.  So the installation of <cite>mdacli</cite>
 depends slightly on your installation of <cite>MDAnalysis</cite>.  If you have
-<cite>MDAnalysis</cite> already installed, you should install <cite>mdacli</cite> on top of
+<cite>MDAnalysis v2</cite> already installed, you should install <cite>mdacli</cite> on top of
 it in the same Python environment. So, activate that environment first.</p>
-<section id="pip">
-<h2>pip<a class="headerlink" href="#pip" title="Permalink to this headline"></a></h2>
-<p>If you just want to use <cite>mdacli</cite>, you can install it with <a class="reference external" href="http://www.pip-installer.org/en/latest/index.html">pip</a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">mdacli</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">deps</span> <span class="o">--</span><span class="n">upgrade</span>
+<p>If you just want to use <cite>mdacli</cite>, you can install it from <cite>PyPI</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">mdacli</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">deps</span>
 </pre></div>
 </div>
-<p>Or if you are a <cite>Github</cite> expert you can clone the repository and install
+<p>Or if you are a <cite>github</cite> expert you can clone the repository and install
 it from the repository directly:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">develop</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">deps</span>
 </pre></div>
 </div>
-<p>If you don’t have <cite>MDAnalysis</cite> installed and want to install
+<p>If you don’t have <cite>MDAnalysis v2</cite> installed and want to install
 everything together:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">mdacli</span> <span class="o">--</span><span class="n">upgrade</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">mdacli</span>
 </pre></div>
 </div>
-</section>
-<section id="conda">
-<h2>conda<a class="headerlink" href="#conda" title="Permalink to this headline"></a></h2>
-<p>First installation with <a class="reference external" href="http://conda.pydata.org/docs/">conda</a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">mdacli</span>
-</pre></div>
-</div>
-<p>which will automatically also install <cite>MDAnalysis</cite>.</p>
-<p>To upgrade later:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">update</span> <span class="n">mdacli</span>
-</pre></div>
-</div>
+<p>This should install also MDAnalysis version 2.</p>
 <p>Any doubts please <cite>contact us &lt;https://github.com/MDAnalysis/mdacli/issues&gt;</cite>.</p>
-</section>
 </section>
 
 

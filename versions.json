@@ -1,68 +1,20 @@
 [
   {
-    "version": "0.1.10",
-    "display": "0.1.10",
-    "url": "https://mdacli.mdanalysis.org/0.1.10",
-    "latest": false
-  },
-  {
-    "version": "0.1.11",
-    "display": "0.1.11",
-    "url": "https://mdacli.mdanalysis.org/0.1.11",
-    "latest": false
-  },
-  {
-    "version": "0.1.12",
-    "display": "0.1.12",
-    "url": "https://mdacli.mdanalysis.org/0.1.12",
+    "version": "0.1.14",
+    "display": "0.1.14",
+    "url": "https://mdacli.mdanalysis.org/0.1.14",
     "latest": true
   },
   {
-    "version": "0.1.4",
-    "display": "0.1.4",
-    "url": "https://mdacli.mdanalysis.org/0.1.4",
-    "latest": false
-  },
-  {
-    "version": "0.1.5",
-    "display": "0.1.5",
-    "url": "https://mdacli.mdanalysis.org/0.1.5",
-    "latest": false
-  },
-  {
-    "version": "0.1.6",
-    "display": "0.1.6",
-    "url": "https://mdacli.mdanalysis.org/0.1.6",
-    "latest": false
-  },
-  {
-    "version": "0.1.7",
-    "display": "0.1.7",
-    "url": "https://mdacli.mdanalysis.org/0.1.7",
-    "latest": false
-  },
-  {
-    "version": "0.1.8",
-    "display": "0.1.8",
-    "url": "https://mdacli.mdanalysis.org/0.1.8",
-    "latest": false
-  },
-  {
-    "version": "0.1.9",
-    "display": "0.1.9",
-    "url": "https://mdacli.mdanalysis.org/0.1.9",
+    "version": "stable",
+    "display": "stable",
+    "url": "https://mdacli.mdanalysis.org/stable",
     "latest": false
   },
   {
     "version": "dev",
     "display": "dev",
     "url": "https://mdacli.mdanalysis.org/dev",
-    "latest": false
-  },
-  {
-    "version": "stable",
-    "display": "stable",
-    "url": "https://mdacli.mdanalysis.org/stable",
     "latest": false
   }
 ]

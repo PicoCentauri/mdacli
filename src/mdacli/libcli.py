@@ -721,6 +721,11 @@ def setup_clients(ap, title, members):
     # adds each Analysis class/function as a CLI under 'cli_subparser'
     # to be writen
     for member_name, parameters in analysis_interfaces.items():
+        ## this should rather be
+        # https://github.com/jkawamoto/dsargparse/blob/master/sample.py
+
+        # ap.add_parser(member)
+
         create_cli(sub_parser=cli_subparser,
                    interface_name=member_name.lower(),
                    parameters=parameters)

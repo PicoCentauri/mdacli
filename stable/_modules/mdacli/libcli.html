@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>mdacli.libcli &mdash; mdacli 0.1.14 documentation</title>
+  <title>mdacli.libcli &mdash; mdacli 0.1.17 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/msmb.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -20,7 +20,7 @@
         <script src="../../_static/js/versions.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within mdacli 0.1.14 documentation"
+          title="Search within mdacli 0.1.17 documentation"
           href="../../_static/opensearch.xml"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
@@ -35,7 +35,7 @@
             <img src="../../_static/mdacli-logo.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                0.1.14
+                0.1.17
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -407,20 +407,20 @@
 
 <span class="sd">    Subparsers parameters are divided in the following categories:</span>
 
-<span class="sd">    2. Analysis Run parameters</span>
+<span class="sd">    1. Analysis Run parameters</span>
 <span class="sd">         time frame as begin, end, step and vebosity</span>
 
-<span class="sd">    3. Saving Parameters</span>
+<span class="sd">    2. Saving Parameters</span>
 <span class="sd">        output_prefix and output_directory</span>
 
-<span class="sd">    4. Mandatory Parameters</span>
+<span class="sd">    3. Mandatory Parameters</span>
 <span class="sd">        mandatory parameters are defined in the CLI as named parameters</span>
 <span class="sd">        as per design</span>
 
-<span class="sd">    5. Optional Parameters</span>
+<span class="sd">    4. Optional Parameters</span>
 <span class="sd">        Named parameters in the Analysis class</span>
 
-<span class="sd">    6. Reference Universe Parameters</span>
+<span class="sd">    5. Reference Universe Parameters</span>
 <span class="sd">        A reference Universe for selection commands. Only is created if</span>
 <span class="sd">        AtomGroup arguments exist.</span>
 
@@ -471,8 +471,10 @@
     <span class="n">opt_</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;optional&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
     <span class="n">parameters_to_parse</span> <span class="o">=</span> <span class="n">pos_</span> <span class="o">+</span> <span class="n">opt_</span>
+
+    <span class="n">MANDATORY_TITLE</span> <span class="o">=</span> <span class="s2">&quot;Mandatory Parameters&quot;</span>
     <span class="n">mandatory_parameters_group</span> <span class="o">=</span> <span class="n">analysis_class_parser</span><span class="o">.</span><span class="n">add_argument_group</span><span class="p">(</span>
-        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Mandatory Parameters&quot;</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="n">MANDATORY_TITLE</span><span class="p">,</span>
         <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Mandatory parameters of this Analysis&quot;</span><span class="p">,</span>
         <span class="p">)</span>
     <span class="n">groups</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pos_</span><span class="p">)</span> <span class="o">*</span> <span class="p">[</span><span class="n">mandatory_parameters_group</span><span class="p">]</span>
@@ -504,6 +506,8 @@
                           <span class="n">help</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
                           <span class="n">default</span><span class="o">=</span><span class="n">default</span><span class="p">,</span>
                           <span class="p">)</span>
+        <span class="k">if</span> <span class="n">group</span><span class="o">.</span><span class="n">title</span> <span class="o">==</span> <span class="n">MANDATORY_TITLE</span><span class="p">:</span>
+            <span class="n">arg_params</span><span class="p">[</span><span class="s2">&quot;required&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">if</span> <span class="n">type_</span> <span class="ow">is</span> <span class="nb">dict</span><span class="p">:</span>
             <span class="n">arg_params</span><span class="p">[</span><span class="s2">&quot;default&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="n">arg_params</span><span class="p">[</span><span class="s2">&quot;action&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">KwargsDict</span>
@@ -710,9 +714,14 @@
 <span class="sd">    present in the doc of the `analysis_callable` but not</span>
 <span class="sd">    in the `analysis_parameters` dict.</span>
 
+<span class="sd">    AtomGroup selection with type None are ignored since these could be</span>
+<span class="sd">    default arguments.</span>
+
 <span class="sd">    The following types are converted:</span>
 
 <span class="sd">    * AtomGroup: Select atoms based on ``universe.select_atoms``</span>
+<span class="sd">    * list[AtomGroup]: Select atoms based on ``universe.select_atoms``</span>
+<span class="sd">      for every element in list</span>
 <span class="sd">    * Universe: Created from parameters.</span>
 
 <span class="sd">    Parameters</span>
@@ -748,6 +757,10 @@
         <span class="k">if</span> <span class="n">param_name</span> <span class="ow">in</span> <span class="n">analysis_parameters_keys</span><span class="p">:</span>
             <span class="k">if</span> <span class="s2">&quot;AtomGroup&quot;</span> <span class="o">==</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]:</span>
                 <span class="n">sel</span> <span class="o">=</span> <span class="n">analysis_parameters</span><span class="p">[</span><span class="n">param_name</span><span class="p">]</span>
+                <span class="c1"># Do not try to parse `None` value</span>
+                <span class="c1"># They could be default arguments of a function</span>
+                <span class="k">if</span> <span class="n">sel</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">continue</span>
                 <span class="n">atomgrp</span> <span class="o">=</span> <span class="n">reference_universe</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="n">sel</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">atomgrp</span><span class="p">:</span>
                     <span class="n">analysis_parameters</span><span class="p">[</span><span class="n">param_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">atomgrp</span>
@@ -756,6 +769,8 @@
                                      <span class="sa">f</span><span class="s2">&quot;string of the selection </span><span class="si">{</span><span class="n">sel</span><span class="si">}</span><span class="s2">` &quot;</span>
                                      <span class="sa">f</span><span class="s2">&quot;does not contain any atoms.&quot;</span><span class="p">)</span>
             <span class="k">elif</span> <span class="s2">&quot;list[AtomGroup]&quot;</span> <span class="o">==</span> <span class="n">dictionary</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">analysis_parameters</span><span class="p">[</span><span class="n">param_name</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">continue</span>
                 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sel</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">analysis_parameters</span><span class="p">[</span><span class="n">param_name</span><span class="p">]):</span>
                     <span class="n">atomgrp</span> <span class="o">=</span> <span class="n">reference_universe</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="n">sel</span><span class="p">)</span>
                     <span class="k">if</span> <span class="n">atomgrp</span><span class="p">:</span>
@@ -863,7 +878,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2021, Philip Loche, Joao MC Teixeira and Oliver Beckstein.
-      <span class="lastupdated">Last updated on Feb 23, 2022.
+      <span class="lastupdated">Last updated on Apr 08, 2022.
       </span></p>
   </div>
 
@@ -890,7 +905,7 @@
      aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"></span>
-        0.1.14
+        0.1.17
       <span class="fa fa-caret-down"></span>
     </span>
 

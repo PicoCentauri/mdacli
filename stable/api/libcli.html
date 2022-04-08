@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Support functions for CLI &mdash; mdacli 0.1.14 documentation</title>
+  <title>Support functions for CLI &mdash; mdacli 0.1.17 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/msmb.css" type="text/css" />
       <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -21,7 +21,7 @@
         <script src="../_static/js/versions.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Search within mdacli 0.1.14 documentation"
+          title="Search within mdacli 0.1.17 documentation"
           href="../_static/opensearch.xml"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -38,7 +38,7 @@
             <img src="../_static/mdacli-logo.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                0.1.14
+                0.1.17
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -153,9 +153,13 @@ line strings into the correct format. Parameters are changed inplace.
 Note that only keys are converted and no new key are added if
 present in the doc of the <cite>analysis_callable</cite> but not
 in the <cite>analysis_parameters</cite> dict.</p>
+<p>AtomGroup selection with type None are ignored since these could be
+default arguments.</p>
 <p>The following types are converted:</p>
 <ul class="simple">
 <li><p>AtomGroup: Select atoms based on <code class="docutils literal notranslate"><span class="pre">universe.select_atoms</span></code></p></li>
+<li><p>list[AtomGroup]: Select atoms based on <code class="docutils literal notranslate"><span class="pre">universe.select_atoms</span></code>
+for every element in list</p></li>
 <li><p>Universe: Created from parameters.</p></li>
 </ul>
 <dl class="field-list simple">
@@ -181,7 +185,7 @@ of no ine is created</p>
 <span class="sig-prename descclassname"><span class="pre">mdacli.libcli.</span></span><span class="sig-name descname"><span class="pre">create_cli</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sub_parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interface_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mdacli/libcli.html#create_cli"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mdacli.libcli.create_cli" title="Permalink to this definition"></a></dt>
 <dd><p>Add subparsers to <cite>cli_parser</cite>.</p>
 <p>Subparsers parameters are divided in the following categories:</p>
-<ol class="arabic simple" start="2">
+<ol class="arabic simple">
 <li><dl class="simple">
 <dt>Analysis Run parameters</dt><dd><p>time frame as begin, end, step and vebosity</p>
 </dd>
@@ -237,25 +241,25 @@ CLI interface.</p></li>
 define the list of atoms. If the file includes bond information,
 partial charges, atom masses, … then these data will be available to
 MDAnalysis. Alternatively, an existing
-<a class="reference external" href="https://docs.mdanalysis.org/stable/documentation_pages/core/topology.html#MDAnalysis.core.topology.Topology" title="(in MDAnalysis v2.0.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MDAnalysis.core.topology.Topology</span></code></a> instance may be given,
+<a class="reference external" href="https://docs.mdanalysis.org/stable/documentation_pages/core/topology.html#MDAnalysis.core.topology.Topology" title="(in MDAnalysis v2.1.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MDAnalysis.core.topology.Topology</span></code></a> instance may be given,
 numpy coordinates, or None for an empty universe.</p></li>
 <li><p><strong>coordinates</strong> (<em>str, stream, list of str, list of stream</em>) – Coordinates can be provided as files of
 a single frame (eg a PDB, CRD, or GRO file); a list of single
 frames; or a trajectory file (in CHARMM/NAMD/LAMMPS DCD, Gromacs
 XTC/TRR, or generic XYZ format). The coordinates must be
 ordered in the same way as the list of atoms in the topology.
-See <a class="reference external" href="https://docs.mdanalysis.org/stable/documentation_pages/coordinates/init.html#id2" title="(in MDAnalysis v2.0.0)"><span>Table of supported coordinate formats</span></a> for what can be read
+See <a class="reference external" href="https://docs.mdanalysis.org/stable/documentation_pages/coordinates/init.html#id2" title="(in MDAnalysis v2.1.0)"><span>Table of supported coordinate formats</span></a> for what can be read
 as coordinates. Alternatively, streams can be given.</p></li>
 <li><p><strong>topology_format</strong> (<em>str, None</em>) – Provide the file format of the topology file; <code class="docutils literal notranslate"><span class="pre">None</span></code> guesses it from
 the file extension. Can also pass a subclass of
-<a class="reference external" href="https://docs.mdanalysis.org/stable/documentation_pages/topology/base.html#MDAnalysis.topology.base.TopologyReaderBase" title="(in MDAnalysis v2.0.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MDAnalysis.topology.base.TopologyReaderBase</span></code></a> to define a custom
+<a class="reference external" href="https://docs.mdanalysis.org/stable/documentation_pages/topology/base.html#MDAnalysis.topology.base.TopologyReaderBase" title="(in MDAnalysis v2.1.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MDAnalysis.topology.base.TopologyReaderBase</span></code></a> to define a custom
 reader to be used on the topology file.</p></li>
 <li><p><strong>trajectory_format</strong> (<em>str or list or object</em>) – provide the file format of the coordinate or trajectory file;
 <code class="docutils literal notranslate"><span class="pre">None</span></code> guesses it from the file extension. Note that this
 keyword has no effect if a list of file names is supplied because
 the “chained” reader has to guess the file format for each
 individual list member [<code class="docutils literal notranslate"><span class="pre">None</span></code>]. Can also pass a subclass of
-<a class="reference external" href="https://docs.mdanalysis.org/stable/documentation_pages/coordinates/base.html#MDAnalysis.coordinates.base.ProtoReader" title="(in MDAnalysis v2.0.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MDAnalysis.coordinates.base.ProtoReader</span></code></a> to define a custom
+<a class="reference external" href="https://docs.mdanalysis.org/stable/documentation_pages/coordinates/base.html#MDAnalysis.coordinates.base.ProtoReader" title="(in MDAnalysis v2.1.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MDAnalysis.coordinates.base.ProtoReader</span></code></a> to define a custom
 reader to be used on the trajectory file.</p></li>
 <li><p><strong>atom_style</strong> (<em>str</em>) – Customised LAMMPS <cite>atom_style</cite> information. Only works with
 <cite>topology_format = data</cite></p></li>
@@ -401,7 +405,7 @@ only-parse-one-argument-groups-parameters-with-argparse</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2021, Philip Loche, Joao MC Teixeira and Oliver Beckstein.
-      <span class="lastupdated">Last updated on Feb 23, 2022.
+      <span class="lastupdated">Last updated on Apr 08, 2022.
       </span></p>
   </div>
 
@@ -428,7 +432,7 @@ only-parse-one-argument-groups-parameters-with-argparse</p>
      aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"></span>
-        0.1.14
+        0.1.17
       <span class="fa fa-caret-down"></span>
     </span>
 
